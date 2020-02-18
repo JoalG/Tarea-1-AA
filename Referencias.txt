@@ -1,0 +1,2 @@
+BubbleSort https://stackoverflow.com/questions/14768010/simple-bubble-sort-c-sharp
+InserSort https://www.geeksforgeeks.org/insertion-sort/
