@@ -8,11 +8,19 @@ public class DataPlotter : MonoBehaviour
     public GameObject PointPrefab;
     public GameObject gEjeY;
     public GameObject gEjeX;
+    public GameObject textEjeX;
+    public TextMesh text;
 
     // Use this for initialization
     void Start()
     {
 
+        for (int i = 1; i <= 10; i++)
+        {
+            var ob = Instantiate(text, new Vector3((i*10), -3, -5), Quaternion.identity);
+            ob.text = (i * 1000).ToString();
+
+        }
         
         int[,] graphInsertSort = generarDatos();
 
