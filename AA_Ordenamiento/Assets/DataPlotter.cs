@@ -10,6 +10,7 @@ public class DataPlotter : MonoBehaviour
     public GameObject PointPrefab;
     public GameObject gEjeY;
     public TextMesh text;
+    public TextMesh textEjeY;
 
     // Use this for initialization
     void Start()
@@ -40,6 +41,12 @@ public class DataPlotter : MonoBehaviour
         var obEjeY = Instantiate(gEjeY);
         obEjeY.transform.localScale = new Vector3((float) 0.25, maxTime, 1);
         obEjeY.transform.localPosition = new Vector3((float)-0.25,maxTime/2, 0);
+
+        for (int i = 1; i <= maxTime/10; i++)
+        {
+            var obT = Instantiate(textEjeY, new Vector3(-3, i * 10, 5), Quaternion.identity);
+            obT.text = (i * 10).ToString();
+        }
 
     }
 

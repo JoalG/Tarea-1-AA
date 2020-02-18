@@ -198,8 +198,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313552871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55, y: 150, z: 0}
-  m_LocalScale: {x: 110, y: 300, z: 1}
+  m_LocalPosition: {x: 50, y: 150, z: 0}
+  m_LocalScale: {x: 120, y: 300, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -306,6 +306,8 @@ MonoBehaviour:
     type: 3}
   gEjeY: {fileID: 562999130749550365, guid: 25bfe4437f53db64facb6292adb8b79a, type: 3}
   text: {fileID: 6546960462921922872, guid: d73563a0e0906634f8a45fc72ff2be27, type: 3}
+  textEjeY: {fileID: 8282101935178389307, guid: d8d44764da1578c41a2584cb79d10711,
+    type: 3}
 --- !u!4 &985897410
 Transform:
   m_ObjectHideFlags: 0
