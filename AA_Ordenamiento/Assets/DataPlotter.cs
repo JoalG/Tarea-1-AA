@@ -6,16 +6,14 @@ public class DataPlotter : MonoBehaviour
 {
 // The prefab for the data points that will be instantiated
     public GameObject PointPrefab;
+    public GameObject gEjeY;
+    public GameObject gEjeX;
 
     // Use this for initialization
     void Start()
     {
 
-        for (var i = 0; i < 10; i++)
-        {
-            Instantiate(PointPrefab, new Vector3(i, i, 0), Quaternion.identity);
-        }
-
+        
         int[,] graphInsertSort = generarDatos();
 
         int corX;
@@ -62,7 +60,7 @@ public class DataPlotter : MonoBehaviour
 
     int[,] generarDatos()
     {
-        int pruebas = 1000;
+        int pruebas = 10;
         int[] tempArray;
         int[,] results = new int[2,pruebas];
         
