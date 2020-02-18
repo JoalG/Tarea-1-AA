@@ -1,41 +1,62 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DataPlotter : MonoBehaviour
 {
 // The prefab for the data points that will be instantiated
     public GameObject PointPrefab;
     public GameObject gEjeY;
-    public GameObject gEjeX;
-    public GameObject textEjeX;
     public TextMesh text;
 
     // Use this for initialization
     void Start()
     {
-
+        // Graficar rangos del eje x
         for (int i = 1; i <= 10; i++)
         {
-            var ob = Instantiate(text, new Vector3((i*10), -3, -5), Quaternion.identity);
+            var ob = Instantiate(text, new Vector3((i * 10), -3, -5), Quaternion.identity);
             ob.text = (i * 1000).ToString();
 
         }
-        
+
         int[,] graphInsertSort = generarDatos();
 
         int corX;
         int corY;
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < graphInsertSort.GetLength(1); i++)
         {
             corY = graphInsertSort[0, i];
-            corX = graphInsertSort[1,i]/100;
-            Debug.Log($"X = {graphInsertSort[1,i]} - Y = {corY}");
+            corX = graphInsertSort[1, i] / 100;
+            Debug.Log($"X = {graphInsertSort[1, i]} - Y = {corY}");
             Instantiate(PointPrefab, new Vector3(corX, corY, 0), Quaternion.identity);
         }
 
+        // Graficar rangos del eje y
+        int maxTime = findMaxTime(graphInsertSort);
+        maxTime = (int)Math.Round((double)maxTime);
+        var obEjeY = Instantiate(gEjeY);
+        obEjeY.transform.localScale = new Vector3((float) 0.25, maxTime, 1);
+        obEjeY.transform.localPosition = new Vector3((float)-0.25,maxTime/2, 0);
+
     }
 
+    int findMaxTime(int[,] matrix)
+    {
+        int max = matrix[0,0];
+        for (int i = 1; i < matrix.GetLength(1); i++)
+        {
+            if (matrix[0,i] > max)
+            {
+                max = matrix[0, i];
+            }
+        }
+
+        return max;
+    }
+    
     static void printArray(int[] arr)
     {
         int n = arr.Length;
