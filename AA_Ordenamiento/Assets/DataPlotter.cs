@@ -18,10 +18,11 @@ public class DataPlotter : MonoBehaviour
 
         int corX;
         int corY;
-        for (int i = 0; i < graphInsertSort.GetLength(1); i++)
+        for (int i = 0; i < 100; i++)
         {
-            corX = graphInsertSort[0, i];
-            corY = Random.Range(1, 11);
+            corY = graphInsertSort[0, i];
+            corX = graphInsertSort[1,i]/100;
+            Debug.Log($"X = {graphInsertSort[1,i]} - Y = {corY}");
             Instantiate(PointPrefab, new Vector3(corX, corY, 0), Quaternion.identity);
         }
 
@@ -60,18 +61,20 @@ public class DataPlotter : MonoBehaviour
 
     int[,] generarDatos()
     {
-        int pruebas = 10;
+        int pruebas = 100;
         int[] tempArray;
         int[,] results = new int[2,pruebas];
         
-            for (int i = 0; i < pruebas; i++)
+        for (int i = 0; i < pruebas; i++)
         {
             // se crea un array con un numero aleatorio de elementos
-            int n = Random.Range(1000, 10000);
-            tempArray = new int[n];
+            int[] elementos = new[] {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
+            int n = Random.Range(0,10);
+            Debug.Log($"Cant elementos = {elementos[n]}");
+            tempArray = new int[elementos[n]];
             
             // se rellena el array temporal
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < elementos[n]; j++)
             {
                 tempArray[j] = Random.Range(0, 100000);
             }
@@ -84,10 +87,11 @@ public class DataPlotter : MonoBehaviour
             watch.Stop();
             
             var elapsedMs = watch.ElapsedMilliseconds;
+            Debug.Log($"Tiempo duro = {elapsedMs}");
             results[0,i] = int.Parse(elapsedMs.ToString());
-            results[1, i] = n;
+            results[1, i] = elementos[n];
         }
-
+        Debug.Log($"N = {results.GetLength(0)} M = {results.GetLength(1)}");
         return results;
     }
 }
