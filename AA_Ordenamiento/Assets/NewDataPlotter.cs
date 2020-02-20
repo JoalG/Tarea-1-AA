@@ -11,6 +11,10 @@ public class NewDataPlotter : MonoBehaviour
     public GameObject gEjeY;        // g es de graficar
     public TextMesh textEjeX;
     public TextMesh textEjeY;
+    public Material BlueMaterial;
+    public Material RedMaterial;
+    public int escala;
+    
     
     /*
     Booleanos para determinar que algoritmo de ordenamiento se graficara
@@ -141,27 +145,35 @@ public class NewDataPlotter : MonoBehaviour
         // Se grafica la linea del eje Y
         var obEjeY = Instantiate(gEjeY);
         obEjeY.transform.localScale = new Vector3((float) 0.25, maxTime, 1);
-        obEjeY.transform.localPosition = new Vector3((float)-0.25,maxTime/2, 0);
+        obEjeY.transform.localPosition = new Vector3((float)-0.25,(maxTime/escala)/2, 0);
 
         // Se grafica los numeros del eje Y
         for (int i = 1; i <= maxTime/10; i++)
         {
             var obT = Instantiate(textEjeY, new Vector3(-3, i * 10, 5), Quaternion.identity);
-            obT.text = (i * 10).ToString();
+            obT.text = ((i * 10)/escala).ToString();
         }
     }
 
     // Graficar los puntos (bolas) segun la data ingresada
-    void graphData(int[,] data)
+    void graphData(int[,] data,bool color)
     {
         int corX;
         int corY;
         
         for (int i = 0; i < data.GetLength(1); i++)
         {
-            corY = data[0, i];
+            corY = data[0, i] /escala;
             corX = data[1, i] / 100;
-            Instantiate(PointPrefab, new Vector3(corX, corY, 0), Quaternion.identity);
+            var bolita =Instantiate(PointPrefab, new Vector3(corX, corY, 0), Quaternion.identity);
+            if (color)
+            {
+                bolita.GetComponent<MeshRenderer>().material = RedMaterial;
+            }
+            else
+            {
+                bolita.GetComponent<MeshRenderer>().material = BlueMaterial;
+            }
         }
     }
 
@@ -171,7 +183,7 @@ public class NewDataPlotter : MonoBehaviour
         int[,] data = generarDatosInsertSort();
         graphRangeEjeX();
         graphRangeEjeY(data);
-        graphData(data);
+        graphData(data, true);
     }
 
     void Graph()
@@ -183,8 +195,71 @@ public class NewDataPlotter : MonoBehaviour
 
         if (graph2)
         {
+            graphBubbleSort();
             // aqui debera graficarse data obtenida con bubbleSort
         }
     }
+    
+    
+    // graficar datos segun resultados obtenidos con BubbleSort
+    
+    void graphBubbleSort()
+    {
+        int[,] data = generarDatosBubbleSort();
+        graphRangeEjeX();
+        graphRangeEjeY(data);
+        graphData(data,false);
+    }
+    
+    
+    // Genera los Datos para el BubbleSort
+    
+    int[,] generarDatosBubbleSort()
+    {
+        int[,] results = new int[2,cantPruebas];  // cantPruebas es el atributo
+        int[] tempArray;
+        int[] cantElemList = new[] {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
 
+        for (int i = 0; i < cantPruebas; i++)
+        {
+            int n = Random.Range(0, 10);
+            tempArray = generarLista(cantElemList[n]);
+
+            results[0, i] = getDuracionBubbleSort(tempArray);
+            results[1, i] = cantElemList[n];
+        }
+
+        return results;
+    }
+
+    // Funcion que devuelve el tiempo en milisegundos que tarda en ordenar lista ingresada con insert sort
+    int getDuracionBubbleSort(int[] lista)
+    {
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        
+        // the code that you want to measure comes here
+        BubbleSort(lista);
+        watch.Stop();
+            
+        var elapsedMs = watch.ElapsedMilliseconds;
+        
+        return int.Parse(elapsedMs.ToString());
+    }
+    
+    //BubbleSort de Geeksforgeeks
+     void BubbleSort(int []arr) 
+    { 
+        int n = arr.Length; 
+        for (int i = 0; i < n - 1; i++) 
+        for (int j = 0; j < n - i - 1; j++) 
+            if (arr[j] > arr[j + 1]) 
+            { 
+                // swap temp and arr[i] 
+                int temp = arr[j]; 
+                arr[j] = arr[j + 1]; 
+                arr[j + 1] = temp; 
+            } 
+    } 
+    
+    
 }

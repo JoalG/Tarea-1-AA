@@ -3,7 +3,13 @@ guid: 2615a97c3a4407940ac46f87eb6e7872
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PointPrefab: {instanceID: 0}
+  - gEjeY: {instanceID: 0}
+  - textEjeX: {instanceID: 0}
+  - textEjeY: {instanceID: 0}
+  - BlueMaterial: {instanceID: 0}
+  - RedMaterial: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

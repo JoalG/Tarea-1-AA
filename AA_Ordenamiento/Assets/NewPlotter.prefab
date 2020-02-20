@@ -50,6 +50,9 @@ MonoBehaviour:
     type: 3}
   textEjeY: {fileID: 8282101935178389307, guid: d8d44764da1578c41a2584cb79d10711,
     type: 3}
+  BlueMaterial: {fileID: 2100000, guid: 921fdf7a6e1b4b94c9442ce731744c0f, type: 2}
+  RedMaterial: {fileID: 2100000, guid: 7a0a3edc668a77e459fcbe688c3ab61f, type: 2}
+  escala: 2
   graph1: 1
-  graph2: 0
-  cantPruebas: 10000
+  graph2: 1
+  cantPruebas: 1000
