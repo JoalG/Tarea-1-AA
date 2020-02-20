@@ -518,5 +518,11 @@ PrefabInstance:
       propertyPath: cantPruebas
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 9065951900563617363, guid: 34769ebd466936d4eab6e01141bf7fbb,
+        type: 3}
+      propertyPath: PointPrefab
+      value: 
+      objectReference: {fileID: 8379930800991421183, guid: 5ff7bb13febecd8438212f62fefcaa4e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34769ebd466936d4eab6e01141bf7fbb, type: 3}
