@@ -52,4 +52,4 @@ MonoBehaviour:
     type: 3}
   graph1: 1
   graph2: 0
-  cantPruebas: 100
+  cantPruebas: 10000
