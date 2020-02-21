@@ -14,6 +14,7 @@ public class NewDataPlotter : MonoBehaviour
     public Material BlueMaterial;
     public Material RedMaterial;
     public int escala;
+    public int rangoY;
     
     
     /*
@@ -144,14 +145,17 @@ public class NewDataPlotter : MonoBehaviour
         
         // Se grafica la linea del eje Y
         var obEjeY = Instantiate(gEjeY);
-        obEjeY.transform.localScale = new Vector3((float) 0.25, maxTime, 1);
-        obEjeY.transform.localPosition = new Vector3((float)-0.25,(maxTime/escala)/2, 0);
+        obEjeY.transform.localScale = new Vector3((float) 0.25, (maxTime/escala)+rangoY, 1);
+        obEjeY.transform.localPosition = new Vector3((float)-0.25,((maxTime/escala)+rangoY)/2, 0);
 
         // Se grafica los numeros del eje Y
-        for (int i = 1; i <= maxTime/10; i++)
+        for (int i = 1; i <= (maxTime/escala)+rangoY; i++)
         {
-            var obT = Instantiate(textEjeY, new Vector3(-3, i * 10, 5), Quaternion.identity);
-            obT.text = ((i * 10)/escala).ToString();
+            if ((i * escala) % rangoY == 0)
+            {
+                var obT = Instantiate(textEjeY, new Vector3(-3, i, 5), Quaternion.identity);
+                obT.text = ((i * escala)).ToString();
+            }
         }
     }
 
