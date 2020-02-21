@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2615a97c3a4407940ac46f87eb6e7872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointPrefab: {fileID: 8354025892293444875, guid: 5ff7bb13febecd8438212f62fefcaa4e,
+  PointPrefab: {fileID: 8379930800991421183, guid: 5ff7bb13febecd8438212f62fefcaa4e,
     type: 3}
   gEjeY: {fileID: 562999130749550365, guid: 25bfe4437f53db64facb6292adb8b79a, type: 3}
   textEjeX: {fileID: 6546960462921922872, guid: d73563a0e0906634f8a45fc72ff2be27,
@@ -53,6 +53,9 @@ MonoBehaviour:
   BlueMaterial: {fileID: 2100000, guid: 921fdf7a6e1b4b94c9442ce731744c0f, type: 2}
   RedMaterial: {fileID: 2100000, guid: 7a0a3edc668a77e459fcbe688c3ab61f, type: 2}
   escala: 2
+  rangoY: 10
+  cuadricula: {fileID: 2792230693259227519, guid: 3ee7b7e2ca361c34283894d87ed5d6b3,
+    type: 3}
   graph1: 1
   graph2: 1
-  cantPruebas: 1000
+  cantPruebas: 100

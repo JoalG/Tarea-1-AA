@@ -15,8 +15,9 @@ public class NewDataPlotter : MonoBehaviour
     public Material RedMaterial;
     public int escala;
     public int rangoY;
-    
-    
+    public GameObject cuadricula;
+
+
     /*
     Booleanos para determinar que algoritmo de ordenamiento se graficara
     Para este caso, graph1 es el insert sort y graph2 es el bubble sort
@@ -155,8 +156,11 @@ public class NewDataPlotter : MonoBehaviour
             {
                 var obT = Instantiate(textEjeY, new Vector3(-3, i, 5), Quaternion.identity);
                 obT.text = ((i * escala)).ToString();
+                Instantiate(cuadricula, new Vector3(55, i, 0),Quaternion.identity);
             }
         }
+        var nameY = Instantiate(textEjeY, new Vector3(-3, ((maxTime/escala))+(rangoY*2), 5), Quaternion.identity);
+        nameY.text = "Ms";
     }
 
     // Graficar los puntos (bolas) segun la data ingresada
