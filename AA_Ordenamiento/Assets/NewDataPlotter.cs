@@ -16,6 +16,8 @@ public class NewDataPlotter : MonoBehaviour
     public int escala;
     public int rangoY;
     public GameObject cuadricula;
+    private int[][] listas;
+    
 
 
     /*
@@ -53,11 +55,13 @@ public class NewDataPlotter : MonoBehaviour
         int[] tempArray;
         int[] cantElemList = new[] {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
 
+        listas = new int[cantPruebas][];
+        
         for (int i = 0; i < cantPruebas; i++)
         {
             int n = Random.Range(0, 10);
             tempArray = generarLista(cantElemList[n]);
-
+            listas[i] = (int[]) tempArray.Clone();
             results[0, i] = getDuracionInsertSort(tempArray);
             results[1, i] = cantElemList[n];
         }
@@ -230,11 +234,11 @@ public class NewDataPlotter : MonoBehaviour
 
         for (int i = 0; i < cantPruebas; i++)
         {
-            int n = Random.Range(0, 10);
-            tempArray = generarLista(cantElemList[n]);
+            //int n = Random.Range(0, 10);
+            tempArray = listas[i];
 
             results[0, i] = getDuracionBubbleSort(tempArray);
-            results[1, i] = cantElemList[n];
+            results[1, i] = listas[i].Length;
         }
 
         return results;
